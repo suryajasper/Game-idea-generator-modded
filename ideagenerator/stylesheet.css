@@ -28,9 +28,15 @@ body {
 	/*outline: 2px solid #555555;*/
 }
 
+.bottomHover {
+  position:fixed;
+  bottom : 10%;
+	left : 25%;
+  width:100%;
+}
+
 .button {
-	background-color: #4CAFFF;
-	
+
 	font-family: opensans;
 	text-align: center;
 	font-size: 25px;
@@ -41,10 +47,9 @@ body {
 	border:none;
 	cursor:pointer;
 
-	position:fixed;
+  margin-bottom: 5px;
+
 	width:50%;
-	bottom : 10%;
-	left : 25%;
 
 	/* Disable text selection: https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting */
 	-webkit-touch-callout: none; /* iOS Safari */
@@ -52,17 +57,29 @@ body {
 	-moz-user-select: none; /* Old versions of Firefox */
 	-ms-user-select: none; /* Internet Explorer/Edge */
 	user-select: none; /* Chrome, Opera and Firefox */
-
-	/* 
-	Prevent double-tapping on button from zooming page on mobile
-	https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action
-	*/
-	touch-action: manipulation; 
+	touch-action: manipulation;
 }
-
-.button:hover {
-  background-color: #5dc2f5;
+.green {
+  background-color: rgb(41, 171, 81);
 }
-.button:active {
-  background-color: #5591ff;
+.red {
+  background-color: rgb(200, 99, 35)  ;
+}
+.blue {
+  background-color: rgb(77, 175, 255) ;
+}
+.purple {
+  background-color: rgb(164, 41, 171) ;
+}
+.green:hover {
+  background-color: rgb(31, 199, 83);
+}
+.red:hover {
+  background-color: rgb(222, 100, 22)  ;
+}
+.blue:hover {
+  background-color: rgb(86, 170, 238) ;
+}
+.purple:hover {
+  background-color: rgb(205, 39, 214) ;
 }

@@ -8,17 +8,24 @@
 		<script src="generator.js"></script>
 	</head>
 	<body>
-		<!-- 'generate' button -->
-		<button class="button" onclick="generate()">Generate Idea</button>
+		<!-- yt channel link -->
+		<div class = "social">
+			<a target="_blank" href="https://www.youtube.com/c/SebastianLague"><img src="Resources/ytbanner.png" width="200" height="50" title="YouTube channel" alt="YouTube channel"></a>
+		</div>
+
+
+		<div class = "bottomHover">
+			<button class="blue button" onclick="generate()">Generate Idea</button>
+			<button class="green button" onclick="save()">Save Idea</button>
+			<button class="purple button" onclick="viewIdeas()">View Saved Ideas</button>
+			<button class="red button" onclick="clearData()">Clear Saved Ideas</button>
+		</div>
 
 		<!-- generated idea text -->
 		<div class = "prompt" id = "content">
 			<p>. . .</p>
 		</div>
 
-		<!-- yt channel link -->
-		<div class = "social">
-			<a target="_blank" href="https://www.youtube.com/c/SebastianLague"><img src="Resources/ytbanner.png" width="200" height="50" title="YouTube channel" alt="YouTube channel"></a>
-		</div>
+
 	</body>
 </html>

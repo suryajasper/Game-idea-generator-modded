@@ -20,6 +20,31 @@ function generate() {
 	result = formatOutput(result);
 	document.getElementById("content").innerHTML = result;
 }
+function save() {
+	if (window.localStorage.getItem('ideas') != undefined) {
+		var storedIdeas = JSON.parse(window.localStorage.getItem('ideas'));
+		for (var i = 0; i < storedIdeas.length; i++) {
+			if (storedIdeas[i] === document.getElementById("content").innerHTML) {
+				return;
+			}
+		}
+		storedIdeas.push(document.getElementById("content").innerHTML)
+		window.localStorage.setItem('ideas', JSON.stringify(storedIdeas));
+	}
+	else {
+		var newArr = [document.getElementById("content").innerHTML];
+		window.localStorage.setItem('ideas', JSON.stringify(newArr));
+	}
+}
+
+function clearData() {
+	console.log("OEIJ");
+	window.localStorage.setItem('ideas', JSON.stringify([]));
+}
+
+function viewIdeas() {
+	console.log(JSON.parse(window.localStorage.getItem('ideas')));
+}
 
 function reset() {
 	character_post_description = '';
@@ -108,7 +133,7 @@ function generateCharacter(parameters) {
 	let make_group = randomChance(chance_of_group);
 	let pre_desc = pickRandomOrNone('character_description', 0.6);
 
-	
+
 	let post_desc_chance = (allow_post_desc)?(pre_desc?0.25:0.8):0;
 	character_post_description = pickRandomOrNone('character_description_post', post_desc_chance);
 
@@ -135,10 +160,10 @@ function generateGoal() {
 	if (character_post_description.includes('who') || character_post_description.includes('that')) {
 		prefix = prefix.replace('who', 'and');
 	}
-	
+
 	return prefix + ' ' + pickRandom('goal');
 }
-	
+
 
 function generateGenre(parameters) {
 	let use_modifers = !parameters.includes('nomods');
@@ -149,7 +174,7 @@ function generateGenre(parameters) {
 		let result = perspective + ' ' + genre_detail + ' ' + genre;
 		return result;
 	}
-	
+
 	return pickRandom('genre');
 }
 
@@ -204,10 +229,10 @@ function resolveOptions(text) {
 }
 
 function pickRandom(category_name) {
-	
+
 	let category = categories[category_name];
-	let random_index = Math.floor(Math.random() * category.length); 
-	
+	let random_index = Math.floor(Math.random() * category.length);
+
 	// Avoid duplicates:
 	let max_iterations = 5;
 	for (let i = 0; i < max_iterations; i ++) {
@@ -235,7 +260,7 @@ function replaceTextBetweenTags(text, replacement, start_tag, end_tag) {
 }
 
 function pickRandomFromList(list) {
-	let random_index = Math.floor(Math.random() * list.length); 
+	let random_index = Math.floor(Math.random() * list.length);
 	return list[random_index];
 }
 
@@ -260,7 +285,7 @@ function indefiniteArticle(word) {
 	if (vowels.includes(word[0])) {
 		return 'an';
 	}
-	
+
 	return 'a';
 }
 
